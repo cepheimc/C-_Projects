@@ -20,99 +20,65 @@ namespace MyArrayList
 
         protected void OnListCleared()
         {
-            try
+
+            if (ListCleared != null)
             {
-                if (ListCleared != null)
-                {
-                    ListCleared.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Clear));
-                }
-                else
-                {
-                    throw new Exception($"Event Cleared is null!");
-                }
+                ListCleared.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Clear));
             }
-            catch(Exception e)
+            else
             {
-                Console.WriteLine($"Error: {e.Message}");
-            }
+                throw new Exception($"Event Cleared is null!");
+            }           
             
         }
 
         protected void OnListAdded(T value)
         {
-            try
+
+            if (ListAdded != null)
             {
-                if (ListAdded != null)
-                {
-                    ListAdded.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Add, value));
-                }
-                else
-                {
-                    throw new Exception($"Event Added is null!");
-                }
+                ListAdded.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Add, value));
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine($"Error: {e.Message}");
-            }
+                throw new Exception($"Event Added is null!");
+            }          
 
         }
 
         protected void OnListRemoved(T value)
         {
-            try
+            if (ListRemoved != null)
             {
-                if (ListRemoved != null)
-                {
-                    ListRemoved.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Remove, value));
-                }
-                else
-                {
-                    throw new Exception($"Event Removed is null!");
-                }
-
+                ListRemoved.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Remove, value));
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine($"Error: {e.Message}");
+                throw new Exception($"Event Removed is null!");
             }
         }
 
         protected void OnListFirst(T value)
         {
-            try
+            if (ListFirst != null)
             {
-                if (ListFirst != null)
-                {
-                    ListFirst.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.First, value));
-                }
-                else
-                {
-                    throw new Exception($"Event First is null!");
-                }
+                ListFirst.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.First, value));
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine($"Error: {e.Message}");
-            }
+                throw new Exception($"Event First is null!");
+            }           
         }
 
         protected void OnListLast(T value)
         {
-            try
+            if (ListLast != null)
             {
-                if (ListLast != null)
-                {
-                    ListLast.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Last, value));
-                }
-                else
-                {
-                    throw new Exception($"Event Last is null!");
-                }
+                ListLast.Invoke(this, new ArrayChangedEvent<T>(ArrayChengedAction.Last, value));
             }
-            catch (Exception e)
+            else
             {
-                Console.WriteLine($"Error: {e.Message}");
+                throw new Exception($"Event Last is null!");
             }
         }
 
